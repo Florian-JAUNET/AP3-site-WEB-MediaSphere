@@ -29,4 +29,10 @@ class MainController extends WebController
         // Affichage de la page à l'utilisateur
         return Template::render("views/global/home.php");
     }
+
+    function about(): string
+    {
+        // Affichage de la page à l'utilisateur
+        return Template::render("views/global/about.php");
+    }
 }

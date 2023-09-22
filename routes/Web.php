@@ -21,10 +21,9 @@ class Web
 
         // Appel la méthode « home » dans le contrôleur $main.
         Route::Add('/', [$main, 'home']);
-        Route::Add('/exemple', [$main, 'exemple']);
-        Route::Add('/exemple2/{parametre}', [$main, 'exemple']);
 
-
+        // Appel la méthode « about » dans le contrôleur $main.
+        Route::Add('/about', [$main, 'about']);
 
         // Appel la fonction inline dans le routeur.
         // Utile pour du code très simple, où un test, l'utilisation d'un contrôleur est préférable.
