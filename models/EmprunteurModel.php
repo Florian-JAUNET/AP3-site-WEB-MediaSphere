@@ -46,7 +46,7 @@ class EmprunteurModel extends SQL
         return false;
     }
 
-    public function creerEmprenteur(mixed $email, mixed $password, mixed $nom, mixed $prenom): bool
+    public function creerEmprenteur(mixed $email, mixed $password, mixed $nom, mixed $prenom, mixed $telephone): bool
     {
         // Création du hash du mot de passe (pour le stockage en base de données)
         $password_hash = password_hash($password, PASSWORD_DEFAULT);
@@ -63,9 +63,9 @@ class EmprunteurModel extends SQL
             // 4 : Compte supprimé
 
             $UUID = TokenHelpers::guidv4(); // Génération d'un UUID v4, qui sera utilisé pour la validation du compte
-            $sql = 'INSERT INTO emprunteur (emailemprunteur, motpasseemprunteur, nomemprunteur, prenomemprunteur, datenaissance, validationcompte, validationtoken) VALUES (?, ?, ?, ?, NOW(), 0, ?)';
+            $sql = 'INSERT INTO emprunteur (emailemprunteur, motpasseemprunteur, nomemprunteur, prenomemprunteur, telportable, validationcompte, validationtoken, datenaissance) VALUES (?, ?, ?, ?, ?, 0, ?, Now())';
             $stmt = parent::getPdo()->prepare($sql);
-            $result = $stmt->execute([$email, $password_hash, $nom, $prenom, $UUID]);
+            $result = $stmt->execute([$email, $password_hash, $nom, $prenom, $telephone, $UUID]);
 
             if ($result) {
                 // Envoi d'un email de validation du compte
