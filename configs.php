@@ -1,8 +1,11 @@
 <?php
 
-$DB_SERVER = getenv("MVC_SERVER") ?: "127.0.0.1";
-$DB_DATABASE = getenv("MVC_DB") ?: "ap_3_mediatout";
+// $DB_SERVER = getenv("MVC_SERVER") ?: "127.0.0.1";
+$DB_SERVER = getenv("MVC_SERVER") ?: "192.168.114.2";
+$DB_DATABASE = getenv("MVC_DB") ?: "mediatout";
+// $DB_USER = getenv("MVC_USER") ?: "root";
 $DB_USER = getenv("MVC_USER") ?: "WEB";
+// $DB_PASSWORD = getenv("MVC_TOKEN") ?: "";
 $DB_PASSWORD = getenv("MVC_TOKEN") ?: "g&xoobrNE%m6C@sW";
 $DEBUG = getenv("MVC_DEBUG") ?: true;
 $URL_VALIDATION = getenv("MVC_URL_VALIDATION") ?: "http://mediatout.florianjaunet.fr/valider-compte/";
