@@ -18,6 +18,15 @@ class RessourceModel extends SQL
         return $stmt->fetchAll(\PDO::FETCH_OBJ);
     }
 
+    public function getLastedRessources(): array
+    {
+        // Affiche les nouveauté donc plus l'ID est haut plus il est récent
+        $sql = 'SELECT * FROM ressource INNER JOIN categorie ON ressource.idcategorie = categorie.idcategorie ORDER BY idressource DESC LIMIT 6;';
+        $stmt = parent::getPdo()->prepare($sql);
+        $stmt->execute();
+        return $stmt->fetchAll(\PDO::FETCH_OBJ);
+    }
+
     public function getRandomRessource($limit = 3)
     {
         $sql = 'SELECT * FROM ressource LEFT JOIN categorie ON categorie.idcategorie = ressource.idcategorie  ORDER BY RAND() LIMIT ?';

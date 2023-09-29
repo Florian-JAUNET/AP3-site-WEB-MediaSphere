@@ -104,6 +104,17 @@ class MainApiController extends ApiController
         }
     }
 
+    function getLastedRessources(): string
+    {
+        $ressources = $this->ressourceModel->getLastedRessources();
+
+        if (!$ressources) {
+            return parent::toJSON([]);
+        } else {
+            return parent::toJSON($ressources);
+        }
+    }
+
     /**
      * Retourne les 5 ressources les plus empruntées.
      */

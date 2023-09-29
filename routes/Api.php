@@ -27,6 +27,9 @@ class Api
         // Retourne X ressources aléatoires, API utilisée pour la page d'accueil
         Route::Add('/api/catalogue/random/{limite}', [$mainApiController, 'getRessourcesRandom']);
 
+        // Retourne les ressources les plus recentes
+        Route::Add('/api/catalogue/lasted', [$mainApiController, 'getLastedRessources']);
+
         // Retourne toutes les ressources
         Route::Add('/api/catalogue/{type}', [$mainApiController, 'getAllRessources']);
     }

@@ -95,7 +95,7 @@
             // La fonction fera un appel Ajax à l'API pour récupérer les ressources.
             // Une fois les ressources récupérées, on met à jour la variable ressources.
             function getRessources() {
-                fetch('/api/catalogue/random/6') // Appel Ajax à l'API en utilisant la fonction fetch.
+                fetch('/api/catalogue/lasted') // Appel Ajax à l'API en utilisant la fonction fetch.
                     .then(res => res.json()) // Conversion la réponse en JSON (objet JavaScript).
                     .then(data => ressources.value = data) // Mise à jour de la variable ressources (variable réactive).
             }
