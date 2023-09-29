@@ -12,6 +12,7 @@ use utils\Template;
 /**
  * Controleur de l'API
  */
+
 class MainApiController extends ApiController
 {
     private RessourceModel $ressourceModel;
@@ -38,6 +39,7 @@ class MainApiController extends ApiController
      * Retourne l'ensemble des catégories présentes dans la base de données.
      * @return string JSON contenant l'ensemble des catégories.
      */
+
     function getCategories(): string
     {
         $categories = $this->categorieModel->getAll();
@@ -53,6 +55,7 @@ class MainApiController extends ApiController
      * Retourne tous les lecteurs présents dans la base de données.
      * @return string JSON contenant l'ensemble des lecteurs.
      */
+
     function getLecteurs(): string
     {
         $lecteurs = $this->emprunteurModel->getAllWithoutPassword();
@@ -68,6 +71,7 @@ class MainApiController extends ApiController
      * Retourne toutes les ressources présentes dans la base de données.
      * @return string JSON contenant l'ensemble des ressources.
      */
+
     function getAllRessources($type = "all"): string
     {
         // Récupération de l'ensemble du catalogue présent dans la base de données
@@ -93,6 +97,7 @@ class MainApiController extends ApiController
      * @param int $limite (optionnel) Nombre de ressources à retourner.
      * @return string JSON contenant X ressources aléatoires (10 par défaut).
      */
+
     function getRessourcesRandom(int $limite = 10): string
     {
         $ressources = $this->ressourceModel->getRandomRessource($limite);
@@ -118,6 +123,7 @@ class MainApiController extends ApiController
     /**
      * Retourne les 5 ressources les plus empruntées.
      */
+    
     function getRessourcesLesPlusEmpruntees(): string
     {
         $ressources = $this->emprunterModel->getTopEmprunts();
