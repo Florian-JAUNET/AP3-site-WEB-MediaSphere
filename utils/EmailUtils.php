@@ -16,8 +16,8 @@ class EmailUtils
 
         $mail = new PHPMailer();
         $mail->isSMTP();
-        $mail->Host = $config["MAIL_SERVER"] ?: 'localhost';
-        $mail->SMTPAuth = false;
+        $mail->Host = $config["MAIL_SERVER"] ?: '192.168.10.15';
+        $mail->SMTPAuth = true;
         $mail->Port = 1025;
 
         $mail->setFrom($config["FROM_EMAIL"], "Contact");

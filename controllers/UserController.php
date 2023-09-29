@@ -2,11 +2,12 @@
 
 namespace controllers;
 
-use controllers\base\WebController;
+use utils\Template;
+use utils\EmailUtils;
+use utils\SessionHelpers;
 use models\EmprunterModel;
 use models\EmprunteurModel;
-use utils\SessionHelpers;
-use utils\Template;
+use controllers\base\WebController;
 
 class UserController extends WebController
 {
@@ -149,6 +150,8 @@ class UserController extends WebController
         $result = $this->emprunter->declarerEmprunt($idRessource, $idExemplaire, $user->idemprunteur);
 
         if ($result) {
+            // Envoi d'un email de confirmation
+            EmailUtils::sendEmail($user->emailemprunteur, "Confirmation d'emprunt", "emprunt", array("user" => $user));
             $this->redirect("/me");
         } else {
             // Gestion d'erreur à améliorer
