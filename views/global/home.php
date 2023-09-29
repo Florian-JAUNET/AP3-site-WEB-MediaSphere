@@ -52,10 +52,10 @@
 
             <div class="hidden lg:block self-center cursor-pointer w-fit" v-if="ressources.length > 0">
                 <!-- On ajoute un événement au clic sur le SVG. -->
-                <svg @click="getRessources()" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                <!-- <svg @click="getRessources()" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                      stroke-width="1.5" stroke="currentColor" class="w-16 h-16">
                     <path stroke-linecap="round" stroke-linejoin="round"
-                          d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75"/>
+                          d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75"/> -->
                 </svg>
             </div>
 
