@@ -21,4 +21,3 @@ return array(
     "FROM_EMAIL" => $FROM_EMAIL,
     "URL_VALIDATION" => $URL_VALIDATION
 );
-

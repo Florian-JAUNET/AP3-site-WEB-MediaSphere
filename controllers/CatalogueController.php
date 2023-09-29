@@ -24,6 +24,7 @@ class CatalogueController extends WebController
      * @param string $type
      * @return string
      */
+
     function liste(string $type): string
     {
         if ($type == "all") {
@@ -43,6 +44,7 @@ class CatalogueController extends WebController
      * @param int $id
      * @return string
      */
+    
     function detail(int $id): string
     {
         // Récupération de la ressource

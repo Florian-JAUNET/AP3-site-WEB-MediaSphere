@@ -18,6 +18,7 @@ class EmprunterModel extends SQL
      * @param $idemprunteur identifiant de l'emprunteur (lecteur)
      * @return bool true si l'emprunt a été déclaré, false sinon.
      */
+    
     public function declarerEmprunt($idRessource, $idExemplaire, $idemprunteur): bool
     {
         try {
