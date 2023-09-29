@@ -10,7 +10,7 @@ $DB_PASSWORD = getenv("MVC_TOKEN") ?: "g&xoobrNE%m6C@sW";
 $DEBUG = getenv("MVC_DEBUG") ?: true;
 $URL_VALIDATION = getenv("MVC_URL_VALIDATION") ?: "http://mediatout.florianjaunet.fr/valider-compte/";
 $MAIL_SERVER = getenv("MVC_MAIL_SERVER") ?: "192.168.10.15";
-$FROM_EMAIL = getenv("MVC_FROM_EMAIL") ?: "contact@localhost.fr";
+$FROM_EMAIL = getenv("MVC_FROM_EMAIL") ?: "contact@mediatout.fr";
 
 return array(
     "DB_USER" => $DB_USER,
