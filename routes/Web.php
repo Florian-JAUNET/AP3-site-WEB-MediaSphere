@@ -49,11 +49,20 @@ class Web
 
             // Action d'emprunt d'une ressource.
             Route::Add('/catalogue/emprunter', [$user, 'emprunter']);
+
+            // Action de modification des informations personnelles.
+            Route::Add('/user/modifyUser', [$user, 'modifyUser']);
+
+            // Action de téléchargement des informations personnelles.
+            Route::Add('/user/dlUser', [$user, 'dlUser']);
+
+            // Action de commentaire d'une ressource.
+            Route::Add('/commenter/{id}', [$catalogue, 'commenter']);
         }
 
         // Route permettant l'accès au catalogue.
         Route::Add('/catalogue/detail/{id}', [$catalogue, 'detail']);
         Route::Add('/catalogue/{type}', [$catalogue, 'liste']);
+        Route::Add('/catalogue', [$catalogue, 'liste']);
     }
 }
-
