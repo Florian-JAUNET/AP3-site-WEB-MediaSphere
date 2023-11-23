@@ -7,7 +7,7 @@
                 <h1 class="text-5xl font-bold text-white mb-6">Bienvenue à la médiathèque</h1>
                 <p class="text-xl text-white">Découvrez notre vaste collection de livres, films et musique.</p>
                 <div class="mt-8">
-                    <a href="/catalogue/all"
+                    <a href="/catalogue/Tous"
                        class="bg-white text-indigo-600 hover:bg-indigo-600 hover:text-white font-bold py-3 px-6 rounded-full">
                         Parcourir les ressources
                     </a>
