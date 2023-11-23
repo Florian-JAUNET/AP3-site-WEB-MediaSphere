@@ -15,20 +15,15 @@
             <form class="space-y-4 md:space-y-6" action="/login" method="post">
                 <div>
                     <label for="email" class="block text-gray-800 font-semibold mb-2">Email</label>
-                    <input type="email" name="email" id="email"
-                           class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
-                           placeholder="email@gmail.com" required>
+                    <input type="email" name="email" id="email" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" placeholder="email@gmail.com" required>
                 </div>
                 <div>
                     <label for="email" class="block text-gray-800 font-semibold mb-2">Mot de passe</label>
-                    <input type="password" name="password" id="password" placeholder="••••••••"
-                           class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
-                           required>
+                    <input type="password" name="password" id="password" placeholder="••••••••" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" required>
                 </div>
 
                 <div class="text-center">
-                    <button type="submit"
-                            class="bg-indigo-600 text-white hover:bg-indigo-900 font-bold py-3 px-6 rounded-full">
+                    <button type="submit" class="bg-indigo-600 text-white hover:bg-indigo-900 font-bold py-3 px-6 rounded-full">
                         Connexion
                     </button>
                     <hr class="m-5">
