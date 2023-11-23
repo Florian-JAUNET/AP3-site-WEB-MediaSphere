@@ -27,8 +27,6 @@ class EmprunteurModel extends SQL
          * 4 : Compte supprimé
          */
 
-        // TODO Il ne faut pas autoriser la connexion si le compte n'est pas validé
-
         $sql = 'SELECT * FROM emprunteur WHERE emailemprunteur = ?';
         $stmt = parent::getPdo()->prepare($sql);
         $stmt->execute([$email]);
@@ -71,7 +69,10 @@ class EmprunteurModel extends SQL
                 // Envoi d'un email de validation du compte
                 // On utilise la fonction sendEmail de la classe EmailUtils
                 // L'email contient un lien vers la page de validation du compte, avec l'UUID généré précédemment
-                EmailUtils::sendEmail($email, "Bienvenue $nom", "newAccount",
+                EmailUtils::sendEmail(
+                    $email,
+                    "Bienvenue $nom",
+                    "newAccount",
                     array(
                         "url" => $config["URL_VALIDATION"] . $UUID,
                         "email" => $email,
@@ -117,6 +118,22 @@ class EmprunteurModel extends SQL
          * - Supprimer l'UUID de la colonne validationtoken
          */
 
+        $stmt = 'SELECT * FROM emprunteur WHERE validationtoken = ?';
+        $stmt = parent::getPdo()->prepare($stmt);
+        $stmt->execute([$uuid]);
+        $user = $stmt->fetch(\PDO::FETCH_OBJ);
+
+        if ($user == null) {
+            return false;
+        } else {
+            $stmt = 'UPDATE emprunteur SET validationcompte = 1, validationtoken = NULL WHERE idemprunteur = ?';
+            $stmt = parent::getPdo()->prepare($stmt);
+            $stmt->execute([$user->idemprunteur]);
+            $result = $stmt->fetch(\PDO::FETCH_OBJ);
+        }
+
+        return $result;
+
         /**
          * Rappel
          *
@@ -127,7 +144,45 @@ class EmprunteurModel extends SQL
          * 3 : Compte banni
          * 4 : Compte supprimé
          */
+    }
 
-        return true;
+    public function modifyUser(mixed $email, mixed $nom, mixed $prenom, mixed $telephone): bool
+    {
+        $user = SessionHelpers::getConnected();
+        // Création du hash du mot de passe (pour le stockage en base de données)
+        // $password_hash = password_hash($password, PASSWORD_DEFAULT);
+
+        try {
+            $sql = 'UPDATE emprunteur SET emailemprunteur = ?, nomemprunteur = ?, prenomemprunteur = ?, telportable = ? WHERE idemprunteur = ?';
+            $stmt = parent::getPdo()->prepare($sql);
+            $result = $stmt->execute([$email, $nom, $prenom, $telephone, $user->idemprunteur]);
+
+            return true;
+        } catch (\Exception $e) {
+            die($e->getMessage());
+            return false;
+        }
+    }
+
+    public function dlUser(mixed $idemprunteur)
+    {
+        try {
+            $sql = 'SELECT * FROM emprunteur WHERE idemprunteur = ?';
+            $stmt = parent::getPdo()->prepare($sql);
+            $stmt->execute([$idemprunteur]);
+            $user = $stmt->fetch(\PDO::FETCH_OBJ);
+
+            $data = array(
+                "nom" => $user->nomemprunteur,
+                "prenom" => $user->prenomemprunteur,
+                "email" => $user->emailemprunteur,
+                "telephone" => $user->telportable
+            );
+
+            return $data;
+        } catch (\Exception $e) {
+            die($e->getMessage());
+            return false;
+        }
     }
 }

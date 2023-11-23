@@ -18,13 +18,14 @@ class EmprunterModel extends SQL
      * @param $idemprunteur identifiant de l'emprunteur (lecteur)
      * @return bool true si l'emprunt a été déclaré, false sinon.
      */
-    
+
     public function declarerEmprunt($idRessource, $idExemplaire, $idemprunteur): bool
     {
         try {
             $sql = 'INSERT INTO emprunter (idressource, idexemplaire, idemprunteur, datedebutemprunt, dureeemprunt, dateretour) VALUES (?, ?, ?, NOW(), 30, DATE_ADD(NOW(), INTERVAL 1 MONTH))';
             $stmt = parent::getPdo()->prepare($sql);
-            return $stmt->execute([$idRessource, $idExemplaire, $idemprunteur]);
+            $result = $stmt->execute([$idRessource, $idExemplaire, $idemprunteur]);
+            return $result;
         } catch (\PDOException $e) {
             return false;
         }
@@ -33,17 +34,34 @@ class EmprunterModel extends SQL
     /**
      * Récupère les emprunts d'un emprunteur en fonction de son id (idemprunteur)
      * @param $idemprunteur
-     * @return bool
+     * @return array
      */
-    public function getEmprunts($idemprunteur): bool|array
+    public function getEmprunts($idemprunteur): array
     {
         try {
-            $sql = 'SELECT * FROM emprunter LEFT JOIN ressource ON emprunter.idressource = ressource.idressource LEFT JOIN categorie ON categorie.idcategorie = ressource.idcategorie WHERE idemprunteur = ?';
+            $sql = 'SELECT * FROM emprunter LEFT JOIN ressource ON emprunter.idressource = ressource.idressource LEFT JOIN categorie ON categorie.idcategorie = ressource.idcategorie WHERE idemprunteur = ? AND dateretourfait = 0';
             $stmt = parent::getPdo()->prepare($sql);
             $stmt->execute([$idemprunteur]);
             return $stmt->fetchAll(\PDO::FETCH_OBJ);
         } catch (\PDOException $e) {
-            return false;
+            return array();
+        }
+    }
+
+    /**
+     * Récupère l'emprunt le plus récent d'un emprunteur en fonction de son id (idemprunteur)
+     * @param $idemprunteur
+     * @return array
+     */
+    public function getLastEmprunts($idemprunteur): array
+    {
+        try {
+            $sql = 'SELECT * FROM emprunter LEFT JOIN ressource ON emprunter.idressource = ressource.idressource LEFT JOIN categorie ON categorie.idcategorie = ressource.idcategorie WHERE idemprunteur = ? AND dateretourfait = 0 ORDER BY datedebutemprunt DESC LIMIT 1';
+            $stmt = parent::getPdo()->prepare($sql);
+            $stmt->execute([$idemprunteur]);
+            return $stmt->fetchAll(\PDO::FETCH_OBJ);
+        } catch (\PDOException $e) {
+            return array();
         }
     }
 

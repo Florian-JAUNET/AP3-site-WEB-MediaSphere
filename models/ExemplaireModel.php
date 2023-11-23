@@ -14,11 +14,12 @@ class ExemplaireModel extends SQL
     public function getByRessource(int $id): bool|array
     {
         try {
-            $sql = 'SELECT * FROM exemplaire WHERE idressource = ?';
+            $sql = 'SELECT * FROM exemplaire e WHERE e.idressource = ?';
             $stmt = parent::getPdo()->prepare($sql);
             $stmt->execute([$id]);
             return $stmt->fetchAll(\PDO::FETCH_OBJ);
         } catch (\PDOException $e) {
+            var_dump($e->getMessage());
             return false;
         }
     }
