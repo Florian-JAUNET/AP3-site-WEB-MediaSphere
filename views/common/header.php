@@ -20,7 +20,7 @@
         <a href="/" class="text-2xl font-semibold text-gray-800">Médiathèque</a>
         <ul class="space-x-4 flex">
             <li><a href="/about" class="text-gray-600 hover:text-gray-800">À propos</a></li>
-            <li><a href="/catalogue/all" class="text-gray-600 hover:text-gray-800">Parcourir les ressources</a></li>
+            <li><a href="/catalogue/Tous" class="text-gray-600 hover:text-gray-800">Parcourir les ressources</a></li>
             <li><a href="/horaires" class="text-gray-600 hover:text-gray-800">Horaires</a></li>
             <li>
                 <?php if (\utils\SessionHelpers::isLogin()) { ?>
