@@ -51,10 +51,10 @@
                         <input type="tel" id="telephone" name="telephone" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500" require>
                     </div>
 
-                    <div class="mb-4">
+                    <!-- <div class="mb-4">
                         <label for="show-num-tel" class="block text-gray-800 font-semibold mb-2">Afficher mon numéro de téléphone</label>
                         <input type="checkbox" id="show-num-tel" name="show-num-tel" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500">
-                    </div>
+                    </div> -->
 
                     <div class="mb-4">
                         <label for="password" class="block text-gray-800 font-semibold mb-2">Mot de passe</label>
