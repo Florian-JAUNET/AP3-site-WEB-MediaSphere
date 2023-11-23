@@ -11,7 +11,6 @@
     </p>
     <ul>
         <li><strong>Identifiant : </strong> <?= $email ?></li>
-        <li><strong>Mot de passe : </strong> <?= $password ?></li>
     </ul>
 
     <p>
@@ -19,7 +18,7 @@
     </p>
 
     <p>
-        A bientôt sur notre site !
+        A bientôt sur le site de la médiathèque !
     </p>
 </body>
 </html>

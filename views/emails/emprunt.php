@@ -1,9 +1,11 @@
 <!doctype html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <title>Nouvel emprunt !</title>
 </head>
+
 <body>
     <h1>
 
@@ -21,4 +23,5 @@
         A bientôt sur notre site !
     </p>
 </body>
+
 </html>
