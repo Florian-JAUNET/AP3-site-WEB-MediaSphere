@@ -13,7 +13,7 @@ class ApiController implements IBase
     function toJson($data): string
     {
         header('Content-Type: application/json'); // On précise que le contenu est du JSON
-        header('Access-Control-Allow-Origin: *'); // On autorise les requêtes depuis n'importe quel domaine => RISQUE DE SECURITE
+        header('Access-Control-Allow-Origin: localhost'); // On autorise l'accès à l'API depuis le domaine localhost
 
         return json_encode($data);
     }
