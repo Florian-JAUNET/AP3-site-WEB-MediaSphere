@@ -111,7 +111,7 @@ class CatalogueController extends WebController
             case 18:
                 $type = "Jeux de simulation";
                 break;
-                
+
             default:
                 $type = "Tous";
                 break;
@@ -131,7 +131,7 @@ class CatalogueController extends WebController
     function detail(int $id): string
     {
         // Récupération de l'id de l'utilisateur connecté
-        $idEmprunteur = SessionHelpers::getConnected()->idemprunteur;
+        // $idEmprunteur = SessionHelpers::getConnected()->idemprunteur;
 
         // Récupération de la ressource
         $ressource = $this->ressourceModel->getOne($id);
@@ -157,9 +157,9 @@ class CatalogueController extends WebController
         $commentaires = $this->ressourceModel->getCommentaires($id);
 
         // Récupère les emprunts de l'utilisateur
-        $emprunts = $this->emprunter->getEmprunts($idEmprunteur);
+        // $emprunts = $this->emprunter->getEmprunts($idEmprunteur);
 
-        return Template::render("views/catalogue/detail.php", array("ressource" => $ressource, "exemplaire" => $exemplaire, "auteurs" => $auteurs, "commentaires" => $commentaires, "emprunts" => $emprunts));
+        return Template::render("views/catalogue/detail.php", array("ressource" => $ressource, "exemplaire" => $exemplaire, "auteurs" => $auteurs, "commentaires" => $commentaires/*, "emprunts" => $emprunts*/));
     }
 
     function commenter(int $id, int $note, string $commentaire): string

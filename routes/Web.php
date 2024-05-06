@@ -28,7 +28,7 @@ class Web
         // Appel la fonction inline dans le routeur.
         // Utile pour du code très simple, où un test, l'utilisation d'un contrôleur est préférable.
         // Si le code accède à la base de données, la création d'un contrôleur est requis.
-        Route::Add('/horaires', fn() => Template::render('views/global/horaires.php'));
+        Route::Add('/horaires', fn () => Template::render('views/global/horaires.php'));
 
         // Routes permettant l'accès à la documentation de l'API.
         Route::Add('/api', [$apidoc, 'liste']);
@@ -48,7 +48,7 @@ class Web
             Route::Add('/logout', [$user, 'logout']);
 
             // Action d'emprunt d'une ressource.
-            Route::Add('/catalogue/emprunter', [$user, 'emprunter']);
+            Route::Add('/catalogue/emprunter/{$id}', [$user, 'emprunter']);
 
             // Action de modification des informations personnelles.
             Route::Add('/user/modifyUser', [$user, 'modifyUser']);
